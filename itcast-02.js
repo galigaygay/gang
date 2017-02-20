@@ -341,8 +341,10 @@
     })
 
     itcast.fn.extend({
+        //<itcast>.click(callback)
      click: function (callback) {
          return this.each(function () {
+             //dom.addEventListener(type,callback,false/true);
              this.addEventListener('click',callback);
          })
      },
