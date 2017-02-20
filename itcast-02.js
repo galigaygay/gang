@@ -352,8 +352,18 @@
          return this.each(function () {
              this.addEventListener(type,callback);
          })
-     }
+     },
+        off:function(type,callback){
+            return this.each(function () {
+                this.removeEventListener(type,callback);
+            })
+        }
     })
+
+    //添加快捷事件绑定的方法
+    
+
+
 
      // / 选择器引擎
     // 通过select函数 来查询dom元素
