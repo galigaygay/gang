@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css方法</title>
+    <style>
+        #dd {
+            background-color: rgb(0, 255, 0);
+        }
+        #mm {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="dd" style="width: 100px;height: 100px;"></div>
+<div style="margin: 8px 0;width: 200px;height: 200px;border: 1px solid rgb(255, 0, 0);"></div>
+<div id="mm"></div>
+<!--<script src="../../../05-JS原生框架-第5天/4-源代码/libs/jquery.js"></script>-->
+ <script src="itcast-02.js"></script>
+<script>
+    // dom元素的属性节点currentStyle
+    // console.log($('div').css('width'));
+    // 获取一个dom元素的指定name样式属性值
+    /*function getCss(dom, name) {
+     // return dom.style[name];
+     return window.getComputedStyle(dom)[name];
+     }
+
+     // console.log(getCss(document.getElementById('dd'), 'backgroundColor'));
+     // console.log(getCss(document.getElementById('dd'), 'height'));
+
+     function setCss(dom, name, value) {
+     // 如果value值为 undefined，表示给dom同时设置多个样式
+     if(value == undefined){
+     // 枚举name对象属性，
+     // 对象的属性是要给dom添加样式属性名，name对象属性对应值，就是样式属性值
+     for(var k in name){
+     dom.style[k] = name[k];
+     }
+     } else { // 否则，就设置dom元素的单个样式
+     dom.style[name] = value;
+     }
+     }*/
+    // var mm = document.getElementById('mm');
+    // setCss(mm, {width: '100px'});
+    // setCss(mm, 'height', '200px');
+    //
+    var val = $('#dd,#mm').css({
+        width: '300px',
+        height: '100px',
+        backgroundColor: 'red'
+    }).css('border', '2px solid green').css('border');
+    console.log(val);
+</script>
+</body>
+</html>

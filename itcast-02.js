@@ -372,6 +372,59 @@
     });
 
 
+    //样式模块
+    function getCss(dom,name){
+        return window.getComputedStyle(dom)[name];
+    }
+
+    function setCss(dom,name,value){
+        //函数执行时，由itcastdom对象调用。
+        //有可能传name和 value两个参数
+        //只传name不传value的情况，有两种情形
+        //即name为 对象的{'width':100px,'height':300px}形式   和   只有一个dom元素
+        //name为 对象的{}形式 时候   setCss（this，name）
+        //name为一个dom元素时候   获取dom元素  getCss(this,name)
+        //
+        //传name和value两个值时 直接设置  setCss(this,name,value)
+
+        if(value==undefined){
+            //只传name一个值得时候  不传value
+            //name为数组形式  {'width':100px,'height':300px}
+            //name数组中的某一项k
+            for(var k in name){
+                dom.style[k]=name[k];
+            }
+        }else{
+            //传name和value两个值时
+            dom.style[name]=value;
+        }
+
+    }
+
+    itcast.fn.extend({
+        css: function (name, value) {
+            if(value==undefined){
+                if(typeof name=='object'){
+                    this.each(function () {
+                        setCss(this,name);
+                    })
+                }
+                else{
+                    //可能为空
+                    return this.length>0?getCss(this[0],name):" ";
+                }
+            }else{
+                this.each(function () {
+                    setCss(this,name,value);
+                })
+            }
+            return this;
+        }
+    })
+
+
+
+
      // / 选择器引擎
     // 通过select函数 来查询dom元素
     var select = function(selector, context) {
