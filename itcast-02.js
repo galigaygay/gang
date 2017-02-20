@@ -361,8 +361,15 @@
     })
 
     //添加快捷事件绑定的方法
-    
-
+    //click,dblclick,mouseover,mouseout,mouseenter,mouseleave,mousemove,keyup,keydown,keypress.
+    //focus,blur
+    //each(arr,function(){})
+    itcast.each(('click dblclick mouseover mouseout mouseenter mouseleave mousemove ' +
+    'keypress keydown keyup focus blur').split(' '), function(type) {
+        itcast.fn[type] = function(callback) {
+            return this.on(type, callback);
+        };
+    });
 
 
      // / 选择器引擎
